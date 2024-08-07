@@ -5,7 +5,7 @@ module.exports = {
   entry: "./src/index.tsx",
   devtool: "inline-source-map",
   devServer: {
-    static: "./dist",
+    historyApiFallback: true,
   },
   module: {
     rules: [
