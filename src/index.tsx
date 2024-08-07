@@ -6,26 +6,40 @@ import {
   Link,
 } from "react-router-dom";
 
-import App from "./App";
-import ErrorPage from "./Error";
+import ErrorPage from "./page/Error";
+
+import Layout from "./components/Layout/Layout";
+
+import { GlobalStyle } from "../style/globalStyle";
 
 const router = createBrowserRouter([
   {
     path: "/",
-    element: (
-      <div>
-        <h1>Hello World</h1>
-        <Link to="login">About Us</Link>
-      </div>
-    ),
+    element: <Layout />,
     errorElement: <ErrorPage />,
-  },
-  {
-    path: "login",
-    element: <div>Login</div>,
+    children: [
+      {
+        path: "/",
+        element: (
+          <div>
+            <h1>Hello World</h1>
+            <Link to="login">Login</Link>
+          </div>
+        ),
+      },
+      {
+        path: "login",
+        element: <div>Login</div>,
+      },
+    ],
   },
 ]);
 
 const container = document.getElementById("app");
 const root = createRoot(container);
-root.render(<RouterProvider router={router} />);
+root.render(
+  <>
+    <GlobalStyle />
+    <RouterProvider router={router} />
+  </>
+);
