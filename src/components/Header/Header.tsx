@@ -7,8 +7,6 @@ import Logo from "../../../public/image/acy_securities_colour_logo.svg";
 import { HeaderContainer, Nav } from "./Header.style";
 
 const Header = () => {
-  console.log("render Header");
-
   return (
     <HeaderContainer>
       <Logo />
